@@ -1,9 +1,8 @@
 const express = require('express')
-const dotenv = require('dotenv')
 const cors = require('cors')
+require('dotenv').config()
 
 const app = express()
-dotenv.config({ path: '../.env' })
 const connect = require('./config/mongodb')
 connect()
 
