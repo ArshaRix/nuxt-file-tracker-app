@@ -12,7 +12,7 @@
                         <div class="content">
                             <div class="content-box">
                                 <div class="box-image">
-                                    <img class="image" :src="require('@/static/img/test-subject-04.jpg')">
+                                    <img class="image" :src="require('@/static/img/test-subject-04.JPG')">
                                 </div>
                                 <div class="box-data">
                                     <div class="name">Jericho Ramos</div>
