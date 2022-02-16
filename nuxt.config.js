@@ -33,7 +33,9 @@ export default {
     '@nuxtjs/auth-next',
   ],
 
-  axios: {},
+  axios: {
+    baseURL: process.env.BASE_URL || 'http://192.168.0.100:3000/',
+  },
 
   build: {
   },
@@ -86,6 +88,6 @@ export default {
   },
 
   server: {
-    host: process.env.BASE_URL || '0.0.0.0',
+    host: '0.0.0.0',
   }  
 }
