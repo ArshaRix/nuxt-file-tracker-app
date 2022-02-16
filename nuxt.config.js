@@ -1,5 +1,3 @@
-require('dotenv').config()
-
 export default {
   head: {
     title: 'The Chronoa Project',
@@ -33,7 +31,6 @@ export default {
   modules: [
     '@nuxtjs/axios',
     '@nuxtjs/auth-next',
-    '@nuxtjs/dotenv',
   ],
 
   axios: {},
