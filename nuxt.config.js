@@ -1,3 +1,5 @@
+require('dotenv').config()
+
 export default {
   head: {
     title: 'The Chronoa Project',
@@ -75,4 +77,9 @@ export default {
   },
 
   loading: false,
+
+  env: {
+    MONGO_URI: process.env.MONGO_URI,
+    JWT_SECRET: process.env.JWT_SECRET,
+  },
 }
