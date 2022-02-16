@@ -75,11 +75,11 @@ export default {
 
   loading: false,
 
-  publicRuntimeConfig: {
-    MONGO_URI: process.env.MONGO_URI,
-  },
+  // publicRuntimeConfig: {
+  //   MONGO_URI: process.env.MONGO_URI,
+  // },
 
-  privateRuntimeConfig: {
-    JWT_SECRET: process.env.JWT_SECRET,
-  },
+  // privateRuntimeConfig: {
+  //   JWT_SECRET: process.env.JWT_SECRET,
+  // },
 }

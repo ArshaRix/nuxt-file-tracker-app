@@ -2,7 +2,7 @@ const mongoose = require('mongoose')
 
 const db = async () => {
     try {
-        await mongoose.connect(`${process.env.MONGO_URI}`, {
+        await mongoose.connect(`mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@thechronoaproject.umtkq.mongodb.net/projectDB?retryWrites=true&w=majority`, {
             useNewUrlParser: true,
             useUnifiedTopology: true,
         })
