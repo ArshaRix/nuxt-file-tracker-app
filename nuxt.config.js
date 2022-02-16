@@ -77,7 +77,6 @@ export default {
 
   publicRuntimeConfig: {
     // MONGO_URI: process.env.MONGO_URI,
-    
   },
 
   privateRuntimeConfig: {
