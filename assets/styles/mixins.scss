@@ -1,0 +1,50 @@
+@mixin pad {
+    padding: var(--pt) var(--pw) 0;
+    transition: all .5s ease;
+}
+
+@mixin spaceBetween {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+@mixin title {
+    font-size: clamp(.9rem, 1.17vw, 1.5rem);
+    text-transform: uppercase;
+    letter-spacing: .15em;
+    font-weight: 600;
+}
+
+@mixin subtitle {
+    font-size: clamp(.80rem, 1.09vw, 1.24rem);
+    letter-spacing: .05em;
+}
+
+@mixin text {
+    font-size: clamp(.74rem, .996vw, 1.067rem);
+    letter-spacing: .0334em;
+    line-height: 1.667;
+}
+
+@mixin label {
+    font-size: clamp(.707rem, .867vw, .9rem);
+    text-transform: uppercase;
+    letter-spacing: .2em;
+    padding-bottom: .4em;    
+}
+
+@mixin caption {
+    font-size: clamp(.67rem, .74vw, .85rem);
+    text-transform: uppercase;
+    letter-spacing: .15em;
+}
+
+@mixin input {
+    background-color: rgba(var(--col-caramel), .5);
+    border: 1px solid rgba(var(--col-gray), .5);
+    transition: border .3s ease;
+    padding: 1vh 1vw;    
+}
+
+
