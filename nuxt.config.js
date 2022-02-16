@@ -34,7 +34,7 @@ export default {
   ],
 
   axios: {
-    baseURL: process.env.BASE_URL,
+    baseURL: 'http://192.168.0.100:3000/',
   },
 
   build: {
@@ -79,12 +79,11 @@ export default {
 
   publicRuntimeConfig: {
     MONGO_URI: process.env.MONGO_URI,
+    baseURL: process.env.BASE_URL,
   },
 
   privateRuntimeConfig: {
     JWT_SECRET: process.env.JWT_SECRET,
-    DB_USER: process.env.DB_USER,
-    DB_PASS: process.env.DB_PASS,
   },
 
   server: {
