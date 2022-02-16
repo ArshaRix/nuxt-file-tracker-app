@@ -31,6 +31,7 @@ export default {
   modules: [
     '@nuxtjs/axios',
     '@nuxtjs/auth-next',
+    '@nuxtjs/dotenv',
   ],
 
   axios: {},
