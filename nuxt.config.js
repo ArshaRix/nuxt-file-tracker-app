@@ -34,7 +34,7 @@ export default {
   ],
 
   axios: {
-    baseURL: process.env.BASE_URL || 'http://192.168.0.100:3000/',
+    baseURL: process.env.BASE_URL,
   },
 
   build: {
