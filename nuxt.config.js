@@ -86,6 +86,6 @@ export default {
   },
 
   server: {
-    host: '0.0.0.0'
+    host: process.env.BASE_URL || '0.0.0.0',
   }  
 }
