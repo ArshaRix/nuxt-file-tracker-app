@@ -81,5 +81,5 @@ export default {
 
   privateRuntimeConfig: {
     JWT_SECRET: process.env.JWT_SECRET,
-  },  
+  },
 }
