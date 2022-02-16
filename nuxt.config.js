@@ -76,7 +76,7 @@ export default {
   loading: false,
 
   publicRuntimeConfig: {
-    // MONGO_URI: process.env.MONGO_URI,
+    MONGO_URI: process.env.MONGO_URI,
   },
 
   privateRuntimeConfig: {
@@ -84,4 +84,8 @@ export default {
     DB_USER: process.env.DB_USER,
     DB_PASS: process.env.DB_PASS,
   },
+
+  server: {
+    host: '0.0.0.0'
+  }  
 }
