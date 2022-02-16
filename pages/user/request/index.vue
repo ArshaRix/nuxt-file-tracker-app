@@ -44,8 +44,22 @@
             return {
                 list: null,
                 count: null,
+                title: 'Request List'
             }
         },
+
+        head() {
+            return {
+                title: this.title,
+                meta: [
+                    {
+                        hid: '',
+                        name: '',
+                        content: '',
+                    }
+                ]
+            }
+        },         
 
         computed: {
             ...mapState('auth', ['loggedIn', 'user']),
