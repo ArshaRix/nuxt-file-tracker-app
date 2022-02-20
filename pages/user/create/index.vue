@@ -46,15 +46,23 @@
                     <div class="row layout-row">
                         <div class="group">
                             <div class="field group-data">
-                                <div class="col group-data--col">
+                                <div class="col col-pass group-data--col">
                                     <label class="label">Password</label>
-                                    <input class="input" v-model="userInfo.password" type="password" required />
+                                    <input class="input" v-model="userInfo.password" :type="show ? 'password' : 'text'" required />
+                                    <svg xmlns="http://www.w3.org/2000/svg" @click="show = !show" :class="{'block': !show, 'hidden': show }" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+                                    </svg>
                                 </div>
                             </div>
                             <div class="field group-data">
-                                <div class="col group-data--col">
+                                <div class="col col-pass group-data--col">
                                     <label class="label">Confirm Password</label>
-                                    <input class="input" type="password" />
+                                    <input class="input" :type="show1 ? 'password' : 'text'" />
+                                    <svg xmlns="http://www.w3.org/2000/svg" @click="show1 = !show1" :class="{'block': !show1, 'hidden': show1 }" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+                                    </svg>                             
                                 </div>
                             </div>
                         </div>
@@ -92,7 +100,9 @@
                 },
                 radio_value: 'user',
                 registered: 'no',
-                title: 'Create your account'
+                title: 'Create your account',
+                show: true,
+                show1: true,
             }
         },
 
@@ -107,7 +117,7 @@
                     }
                 ]
             }
-        },        
+        },       
 
         methods: {
             async submitForm() {
@@ -135,7 +145,7 @@
                     console.log(err);
                 }
             },
-        }
+        },
     }
 </script>
 
@@ -190,6 +200,20 @@
                                 &:hover, &:focus {
                                     border-color: rgba(var(--col-gray), 1);
                                 }
+                            }
+                        }
+
+                        .col-pass {
+                            position: relative;
+
+                            svg {
+                                position: absolute;
+                                height: 1em;
+                                width: 1em;
+                                right: 5%;
+                                bottom: 20%;
+                                color: rgba(61, 61, 61, .5);
+                                cursor: pointer;
                             }
                         }
                     }

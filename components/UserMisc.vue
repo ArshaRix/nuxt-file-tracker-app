@@ -10,11 +10,11 @@
                             <input type="text" placeholder="Course" v-model="studentData.course">
                         </div>
                         <div class="form--group">
-                            <input type="text" placeholder="Section" v-model="studentData.section">
+                            <input type="text" placeholder="Block Section" v-model="studentData.section">
                             <input type="text" placeholder="Year Graduated" v-model="studentData.year">
                         </div>
                         <div class="form--parag">
-                            <p>■ <span>This form will be check through school personel.</span></p>
+                            <p>■ <span>This form will be check through school personnel.</span></p>
                             <p>■ <span>Make it readable to prevent some problem.</span></p>
                         </div>
                         <div class="form--action">
@@ -34,7 +34,7 @@
                         <div class="form--group">
                             <input type="text" placeholder="Position" v-model="clientData.position">
                             <select v-model="selected">
-                                <option value="" hidden disabled>Handler Document</option>
+                                <option value="" hidden disabled>File Requested</option>
                                 <option value="Good Moral Certificate">Good Moral Certificate</option>
                                 <option value="Clearance">Clearance</option>
                                 <option value="Transcript of Records">Transcript of Records</option>
