@@ -92,7 +92,7 @@
                                 </div>
                             </nuxt-link>
                         </template>
-                        <template v-else-if="selected === 'Ready to Pickup'">
+                        <template v-else-if="selected === 'Ready to pickup'">
                             <nuxt-link class="link request-list--item" :to="'/file/' + document._id" v-for="document in gmcStateRpList" :key="document._id">
                                 <div class="link-top">{{ $moment(document.createdAt).format('ll') }}</div>
                                 <div class="link-group f-group">
@@ -190,7 +190,7 @@
                                 </div>
                             </nuxt-link>
                         </template>
-                        <template v-else-if="selected === 'Ready to Pickup'">
+                        <template v-else-if="selected === 'Ready to pickup'">
                             <nuxt-link class="link request-list--item" :to="'/file/' + document._id" v-for="document in clrStateRpList" :key="document._id">
                                 <div class="link-top">{{ $moment(document.createdAt).format('ll') }}</div>
                                 <div class="link-group f-group">
@@ -288,7 +288,7 @@
                                 </div>
                             </nuxt-link>
                         </template>
-                        <template v-else-if="selected === 'Ready to Pickup'">
+                        <template v-else-if="selected === 'Ready to pickup'">
                             <nuxt-link class="link request-list--item" :to="'/file/' + document._id" v-for="document in torStateRpList" :key="document._id">
                                 <div class="link-top">{{ $moment(document.createdAt).format('ll') }}</div>
                                 <div class="link-group f-group">
@@ -695,6 +695,7 @@
                             margin-bottom: 2.667vh;
                             letter-spacing: .05em;
                             color: var(--col-black);
+                            text-transform: capitalize;
                         }
                     }
 

@@ -2,6 +2,7 @@ const { Router } = require('express')
 const router = Router()
 
 const Document = require('../../models/Document')
+const auth = require('../../config/auth')
 
 router.get('/state/wa', async (req, res) => {
     try {
@@ -33,10 +34,10 @@ router.get('/state/wr', async (req, res) => {
     }
 })
 
-router.get('/state/rp', async (req, res) => {
+router.get('/state/rp', (req, res) => {
     try {
         Document
-            .find({ document: 'Good Moral Certificate', action: 'Ready to Pickup' })
+            .find({ document: 'Good Moral Certificate', action: 'Ready to pickup' })
             .populate('creator')
             .exec((err, data) => {
             if (err) console.log(err)
@@ -46,6 +47,12 @@ router.get('/state/rp', async (req, res) => {
         res.status(500).send(err)
         console.log(err)
     }
+})
+
+router.get('/state/rp/count', async (req, res) => {
+    let count = await Document.countDocuments({ document: 'Good Moral Certificate', action: 'Ready to pickup' })
+
+    res.json(count)
 })
 
 router.get('/state/rm', async (req, res) => {

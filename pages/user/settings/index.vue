@@ -29,9 +29,13 @@
                                 </div>
                             </div>
                             <div class="field group-data">
-                                <div class="col group-data--col">
-                                    <label class="label">Password</label>
-                                    <input class="input" v-model="userInfo.password" type="password" />
+                                <div class="col col-pass group-data--col">
+                                    <label class="label">Password <span class="label-sm">[To change password, just input here]</span></label>
+                                    <input class="input" v-model="userInfo.password" :type="show ? 'password' : 'text'" />
+                                    <svg xmlns="http://www.w3.org/2000/svg" @click="show = !show" :class="{'block': !show, 'hidden': show }" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+                                    </svg>                                    
                                 </div>
                             </div>
                         </div>
@@ -91,8 +95,14 @@
                             </div>
                             <div class="field group-data">
                                 <div class="col group-data--col">
-                                    <label class="label">Handler File</label>
-                                    <input class="input" v-model="userInfo.handlerFile" type="text" />
+                                    <label class="label">File Requested</label>
+                                    <!-- <input class="input" v-model="userInfo.handlerFile" type="text" /> -->
+                                    <select class="input" v-model="userInfo.handlerFile">
+                                        <option value="" hidden disabled>File Requested</option>
+                                        <option value="Good Moral Certificate">Good Moral Certificate</option>
+                                        <option value="Clearance">Clearance</option>
+                                        <option value="Transcript of Records">Transcript of Records</option>
+                                    </select>   
                                 </div>
                             </div>
                         </div>
@@ -140,6 +150,7 @@
                     position: '',
                     handlerFile: '',                    
                 },
+                show: true,
             }
         },
 
@@ -214,7 +225,7 @@
 
                 .content {
                     border-bottom: 1.5px solid rgba(var(--col-gray), .5);
-                    width: 40vw;
+                    width: 45vw;
 
                     &-title {
                         text-transform: uppercase;
@@ -246,14 +257,14 @@
                     display: flex;
                     align-items: center;
                     justify-content: space-around;
-                    width: 40vw;
+                    width: 45vw;
                     flex-wrap: wrap;
                     padding: 5.667vh 0;
                     gap: 2rem;
                     border-bottom: 1.5px solid rgba(61, 61, 61, 1);
 
                     &-data {
-                        flex: 1 1 250px;
+                        flex: 1 1 280px;
 
                         .col {
                             display: flex;
@@ -261,16 +272,33 @@
 
                             .label {
                                 color: rgba(var(--col-gray), .9);
+
+                                &-sm {
+                                    font-size: clamp(.407rem, .467vw, .5rem);
+                                }
                             }
 
-                            .input {
-
+                            .input, select {
 
                                 &:hover, &:focus {
                                     border-color: rgba(var(--col-gray), 1);
                                 }
                             }
                         }
+
+                        .col-pass {
+                            position: relative;
+
+                            svg {
+                                position: absolute;
+                                height: 1em;
+                                width: 1em;
+                                right: 5%;
+                                bottom: 20%;
+                                color: rgba(61, 61, 61, .5);
+                                cursor: pointer;
+                            }
+                        }                        
                     }
                 }
             }

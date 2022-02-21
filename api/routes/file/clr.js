@@ -36,7 +36,7 @@ router.get('/state/wr', async (req, res) => {
 router.get('/state/rp', async (req, res) => {
     try {
         Document
-            .find({ document: 'Clearance', action: 'Ready to Pickup' })
+            .find({ document: 'Clearance', action: 'Ready to pickup' })
             .populate('creator')
             .exec((err, data) => {
             if (err) console.log(err)
@@ -46,6 +46,12 @@ router.get('/state/rp', async (req, res) => {
         res.status(500).send(err)
         console.log(err)
     }
+})
+
+router.get('/state/rp/count', async (req, res) => {
+    let count = await Document.countDocuments({ document: 'Clearance', action: 'Ready to pickup' })
+
+    res.json(count)
 })
 
 router.get('/state/rm', async (req, res) => {

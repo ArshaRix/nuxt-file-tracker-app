@@ -6,11 +6,33 @@
                     <div class="row layout-row layout-border">
                         <div class="content">
                             <div class="label" v-if="!loggedIn">Request List</div>
-                            <div class="label" v-else>Request List</div>
+                            <div class="label" v-else>
+                                <template v-if="user.role === 'user'">
+                                    Request List
+                                </template> 
+                                <template v-else>
+                                    <div class="handler" v-if="user.handlerFile === 'Good Moral Certificate'">
+                                        Request List [Good Moral Certificate - Ready to Pickup]
+                                    </div>
+                                    <div class="handler" v-else-if="user.handlerFile === 'Clearance'">
+                                        Request List [Clearance - Ready to Pickup]
+                                    </div>
+                                    <div class="handler" v-else-if="user.handlerFile === 'Transcript of Records'">
+                                        Request List [Transcript of Records - Ready to Pickup]
+                                    </div>                                
+                                </template> 
+                            </div>
                         </div>
                         <div class="content">
                             <div class="label counter" v-if="!loggedIn">0 Request</div>
-                            <div class="label" v-else>{{ count }} Request</div>
+                            <div class="label" v-else>
+                                <template v-if="user.role === 'user'">{{ count }} Request</template>
+                                <template v-else>
+                                    <div class="handler" v-if="user.handlerFile === 'Good Moral Certificate'">{{ gmcCount }} Request</div>
+                                    <div class="handler" v-else-if="user.handlerFile === 'Clearance'">{{ clrCount }} Request</div>
+                                    <div class="handler" v-else-if="user.handlerFile === 'Transcript of Records'">{{ torCount }} Request</div>
+                                </template>
+                            </div>
                         </div>
                     </div>
                     <div class="row layout-row" v-if="!loggedIn">
@@ -19,17 +41,53 @@
                         </div>
                     </div>
                     <div class="row layout-row" v-else>
-                        <div class="group" v-for="item in list" :key="item._id">
-                            <div class="data">
-                                <div class="text">{{ item.document }}</div>
-                                <div class="subtext">{{ item.action }} by Prof. {{ item.clientName }} </div>
+                        <template v-if="user.role === 'user'">
+                            <div class="group" v-for="item in list" :key="item._id">
+                                <div class="data">
+                                    <div class="text">{{ item.document }}</div>
+                                    <div class="subtext">{{ item.action }} by Prof. {{ item.clientName }} </div>
+                                </div>
+                                <div class="data">
+                                    <div class="date">{{ $moment(item.createdAt).format('ll') }}</div>
+                                </div>
                             </div>
-                            <div class="data">
-                                <div class="date">{{ $moment(item.createdAt).format('ll') }}</div>
+                        </template>
+                        <template v-else>
+                            <div class="handler" v-if="user.handlerFile === 'Good Moral Certificate'">
+                                <div class="group" v-for="item in gmcList" :key="item._id">
+                                    <div class="data">
+                                        <div class="text">{{ item.document }}</div>
+                                        <div class="subtext">{{ item.action }} by Prof. {{ item.clientName }} </div>
+                                    </div>
+                                    <div class="data">
+                                        <div class="date">{{ $moment(item.createdAt).format('ll') }}</div>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
+                            <div class="handler" v-else-if="user.handlerFile === 'Clearance'">
+                                <div class="group" v-for="item in clrList" :key="item._id">
+                                    <div class="data">
+                                        <div class="text">{{ item.document }}</div>
+                                        <div class="subtext">{{ item.action }} by Prof. {{ item.clientName }} </div>
+                                    </div>
+                                    <div class="data">
+                                        <div class="date">{{ $moment(item.createdAt).format('ll') }}</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="handler" v-else-if="user.handlerFile === 'Transcript of Records'">
+                                <div class="group" v-for="item in torList" :key="item._id">
+                                    <div class="data">
+                                        <div class="text">{{ item.document }}</div>
+                                        <div class="subtext">{{ item.action }} by Prof. {{ item.clientName }} </div>
+                                    </div>
+                                    <div class="data">
+                                        <div class="date">{{ $moment(item.createdAt).format('ll') }}</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </template>                        
                     </div>
-                    <div class="row layout-row"></div>
                 </div>
             </div>
         </div>
@@ -44,6 +102,12 @@
             return {
                 list: null,
                 count: null,
+                gmcList: null,
+                gmcCount: null,
+                clrList: null,
+                clrCount: null,
+                torList: null,
+                torCount: null,
                 title: 'Request List'
             }
         },
@@ -83,8 +147,68 @@
                     }).catch(err => {
                         console.log(err)
                     })
-                }                
+                }
             }
+
+            gmcListData: {
+                if (this.loggedIn) {
+                    this.$axios.$get('/api/gmc/state/rp').then(response => {
+                        this.gmcList = response
+                    }).catch(err => {
+                        console.log(err)
+                    })
+                }
+            }
+
+            gmcCountList: {
+                if (this.loggedIn) {
+                    this.$axios.$get('/api/gmc/state/rp/count').then(response => {
+                        this.gmcCount = response
+                    }).catch(err => {
+                        console.log(err)
+                    })
+                }
+            }            
+
+            clrListData: {
+                if (this.loggedIn) {
+                    this.$axios.$get('/api/clr/state/rp').then(response => {
+                        this.clrList = response
+                    }).catch(err => {
+                        console.log(err)
+                    })
+                }
+            }
+
+            clrCountList: {
+                if (this.loggedIn) {
+                    this.$axios.$get('/api/clr/state/rp/count').then(response => {
+                        this.gmcCount = response
+                    }).catch(err => {
+                        console.log(err)
+                    })
+                }
+            }             
+
+            torListData: {
+                if (this.loggedIn) {
+                    this.$axios.$get('/api/tor/state/rp').then(response => {
+                        this.torList = response
+                    }).catch(err => {
+                        console.log(err)
+                    })
+                }
+            }
+            
+            torCountList: {
+                if (this.loggedIn) {
+                    this.$axios.$get('/api/tor/state/rp/count').then(response => {
+                        this.gmcCount = response
+                    }).catch(err => {
+                        console.log(err)
+                    })
+                }
+            }             
         },
     }
 </script>
