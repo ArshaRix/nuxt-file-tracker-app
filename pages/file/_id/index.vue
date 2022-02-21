@@ -50,7 +50,13 @@
                         <div class="group">
                             <div class="field group-data">
                                 <div class="col group-data--col">
-                                    <button class="button button-back" v-if="!documents.action === 'Ready to pickup'" @click="rejectForm">Reject Request</button>
+                                    <button class="button button-back" @click="rejectForm">Reject Request</button>
+                                </div>
+                                <div class="col group-data--col" v-if="documents.action === 'Waiting for approval'">
+                                    <button class="button button-back" @click="rejectForm">Reject Request</button>
+                                </div>
+                                <div class="col group-data--col" v-if="documents.action === 'Waiting to release'">
+                                    <button class="button button-back" @click="rejectForm">Reject Request</button>
                                 </div>
                             </div>
                             <div class="field group-data">
