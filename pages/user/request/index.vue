@@ -56,7 +56,7 @@
                             <div class="handler" v-if="user.handlerFile === 'Good Moral Certificate'">
                                 <div class="group" v-for="item in gmcList" :key="item._id">
                                     <div class="data">
-                                        <div class="text">{{ item.document }}</div>
+                                        <div class="text">{{ item.studentLastName }}, {{ item.studentFirstName }}</div>
                                         <div class="subtext">{{ item.action }} by Prof. {{ item.clientName }} </div>
                                     </div>
                                     <div class="data">
@@ -67,7 +67,7 @@
                             <div class="handler" v-else-if="user.handlerFile === 'Clearance'">
                                 <div class="group" v-for="item in clrList" :key="item._id">
                                     <div class="data">
-                                        <div class="text">{{ item.document }}</div>
+                                        <div class="text">{{ item.studentLastName }}, {{ item.studentFirstName }}</div>
                                         <div class="subtext">{{ item.action }} by Prof. {{ item.clientName }} </div>
                                     </div>
                                     <div class="data">
@@ -78,7 +78,7 @@
                             <div class="handler" v-else-if="user.handlerFile === 'Transcript of Records'">
                                 <div class="group" v-for="item in torList" :key="item._id">
                                     <div class="data">
-                                        <div class="text">{{ item.document }}</div>
+                                        <div class="text">{{ item.studentLastName }}, {{ item.studentFirstName }}</div>
                                         <div class="subtext">{{ item.action }} by Prof. {{ item.clientName }} </div>
                                     </div>
                                     <div class="data">
@@ -183,7 +183,7 @@
             clrCountList: {
                 if (this.loggedIn) {
                     this.$axios.$get('/api/clr/state/rp/count').then(response => {
-                        this.gmcCount = response
+                        this.clrCount = response
                     }).catch(err => {
                         console.log(err)
                     })
@@ -203,7 +203,7 @@
             torCountList: {
                 if (this.loggedIn) {
                     this.$axios.$get('/api/tor/state/rp/count').then(response => {
-                        this.gmcCount = response
+                        this.torCount = response
                     }).catch(err => {
                         console.log(err)
                     })
