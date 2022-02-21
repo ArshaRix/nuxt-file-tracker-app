@@ -116,7 +116,7 @@
                                 </div>
                             </nuxt-link>
                         </template>
-                        <template v-else>
+                        <template v-else-if="selected === 'Remarks'">
                             <nuxt-link class="link request-list--item" :to="'/file/' + document._id" v-for="document in gmcStateRmList" :key="document._id">
                                 <div class="link-top">{{ $moment(document.createdAt).format('ll') }}</div>
                                 <div class="link-group f-group">
