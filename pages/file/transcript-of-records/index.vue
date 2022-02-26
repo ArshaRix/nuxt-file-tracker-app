@@ -55,12 +55,13 @@
                             </div>
                             <div class="field group-data">
                                 <div class="col group-data--col">
-                                    <button class="button button-submit" type="submit" @click="submitForm()">Submit a Request</button>
+                                    <button class="button button-submit" type="submit" @click.prevent="toggle">Submit a Request</button>
                                 </div>
                             </div>
                         </div>                        
                     </li>
                 </ul>
+                <Modal :showModal="isModalOpen" documentData="Transcript of Records" />
             </div>
         </div>
         <div class="file-view" v-else></div>
@@ -68,40 +69,22 @@
 </template>
 
 <script>
-    import { mapState } from 'vuex'
+    import { mapState, mapMutations, mapGetters } from 'vuex'
 
     export default {
         middleware: 'auth',
 
-        data() {
-            return {
-                document: 'Transcript of Records',
-                action: 'Waiting for approval'
-            }
-        },
-
         computed: {
             ...mapState('auth', ['loggedIn', 'user']),
+            ...mapGetters({ isModalOpen: 'modal/toggle' }),
         },
 
         methods: {
+            ...mapMutations({ toggle: 'modal/TOGGLE' }),
+
             redirect() {
                 this.$router.push('/')
             },
-
-            async submitForm() {
-                try {
-                    await this.$axios.$post('/api/documents/', {
-                        document: this.document,
-                        action: this.action,
-                        studentFirstName: this.user.firstname,
-                        studentLastName: this.user.lastname                        
-                    })
-                    this.$router.push('/')
-                } catch (err) {
-                    console.log(err)
-                }
-            }
         }
     }
 </script>
