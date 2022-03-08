@@ -52,7 +52,7 @@
                                         <p>Name</p>
                                     </div>
                                     <div class="link-group--text">
-                                        <p>{{ document.creator.firstname }} {{ document.creator.lastname }}</p>
+                                        <p>{{ document.studentFirstName }} {{ document.studentLastName }}</p>
                                     </div>
                                 </div>
                                 <div class="link-group">
