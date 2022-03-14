@@ -18,7 +18,7 @@ const documentSchema = new Schema({
         type: String
     },
 
-    stundentEmail: {
+    studentEmail: {
         type: String
     },
 

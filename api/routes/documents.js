@@ -15,8 +15,8 @@ router.post('/', auth, async (req, res) => {
     
     try {
         await documentReq.save()
-        sendFileRequest(documentReq.stundentEmail, documentReq.document, documentReq.action)
-        res.status(201).send({})
+        sendFileRequest(documentReq.studentEmail, documentReq.document, documentReq.action)
+        res.status(201).send(documentReq)
     } catch (err) {
         res.status(400).send()
     }
@@ -106,7 +106,7 @@ router
     
             updates.forEach((update) => documentReq[update] = body[update])
             await documentReq.save()
-            sendFileRequest(documentReq.stundentEmail, documentReq.document, documentReq.action)
+            sendFileRequest(documentReq.studentEmail, documentReq.document, documentReq.action)
             res.send(documentReq)
     
         } catch (err) {

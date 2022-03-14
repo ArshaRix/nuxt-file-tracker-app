@@ -11,9 +11,9 @@ const sendWelcomeEmail = (email, firstname) => {
     })
 }
 
-const sendFileRequest = (stundentEmail, document, action) => {
+const sendFileRequest = (studentEmail, document, action) => {
     sgMail.send({
-        to: stundentEmail,
+        to: studentEmail,
         from: 'r.jericho0586@gmail.com',
         subject: `File Requested: ${document}.`,
         text: `Status: ${action}. Check system request page to see the full status.`
