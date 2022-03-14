@@ -4,12 +4,15 @@ const router = Router()
 const User = require('../models/User')
 const auth = require('../config/auth')
 
+const { sendWelcomeEmail } = require('../emails/account')
+
 router.post('/', async (req, res) => {
     const user = new User(req.body)
 
     try {
         const token = await user.generateAuthToken()
         await user.save()
+        sendWelcomeEmail(user.email, user.firstname)
         res.status(201).send({ token })
     } catch (err) {
         res.status(400).send()
@@ -20,7 +23,6 @@ router.post('/login', async (req, res) => {
     try {
         const user = await User.findByCredentials(req.body.username, req.body.password)
         const token = await user.generateAuthToken()
-        
         res.send({ token })
     } catch (err) {
         res.status(400).send()
