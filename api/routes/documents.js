@@ -4,15 +4,18 @@ const router = Router()
 const Document = require('../models/Document')
 const auth = require('../config/auth')
 
+const { sendFileRequest } = require('../emails/account')
+
 router.post('/', auth, async (req, res) => {
 
-    const document = new Document({
+    const documentReq = new Document({
         ...req.body,
         creator: req.user._id
     })
     
     try {
-        await document.save()
+        await documentReq.save()
+        sendFileRequest(documentReq.stundentEmail, documentReq.document, documentReq.action)
         res.status(201).send({})
     } catch (err) {
         res.status(400).send()
@@ -95,16 +98,16 @@ router
         }
 
         try {
-            const document = await Document.findOne({ _id })
+            const documentReq = await Document.findOne({ _id })
     
-            if (!document) {
+            if (!documentReq) {
                 return res.status(404).send('Document not found!')
             }
     
-            updates.forEach((update) => document[update] = body[update])
-            await document.save()
-    
-            res.send(document)
+            updates.forEach((update) => documentReq[update] = body[update])
+            await documentReq.save()
+            sendFileRequest(documentReq.stundentEmail, documentReq.document, documentReq.action)
+            res.send(documentReq)
     
         } catch (err) {
             res.status(500).send()

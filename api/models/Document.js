@@ -18,6 +18,10 @@ const documentSchema = new Schema({
         type: String
     },
 
+    stundentEmail: {
+        type: String
+    },
+
     clientName: {
         type: String
     },

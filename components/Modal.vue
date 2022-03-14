@@ -52,7 +52,8 @@
                         document: this.documentData,
                         action: this.action,
                         studentFirstName: this.user.firstname,
-                        studentLastName: this.user.lastname
+                        studentLastName: this.user.lastname,
+                        studentEmail: this.user.email
                     })
                     this.$store.dispatch('modal/toggle')
                     this.$router.push('/')
