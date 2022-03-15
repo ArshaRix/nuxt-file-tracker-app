@@ -6,7 +6,6 @@
                 <ul class="request-list">
                     <li class="row request-list--item" v-for="request in requestList" :key="request.id">
                         <nuxt-link class="link" :to="'/file/' + request.link">
-                            <div class="link-ct link-top">Request 00{{ request.id }}</div> 
                             <div class="link-ct link-center">{{ request.item }}</div>
                             <div class="link-ct link-bottom">
                                 <div class="underline">See More</div>
@@ -383,10 +382,6 @@
                         id: 4,
                         item: 'Alumni Form',
                     },
-                    {
-                        id: 5,
-                        item: 'Form ###',
-                    },
                 ],
                 select: '',             
             }
@@ -527,6 +522,7 @@
         
         ul {
             list-style: none;
+            margin-bottom: 2vh;
 
             li {
                 border-bottom: 1.5px solid rgba(var(--col-gray), .9);

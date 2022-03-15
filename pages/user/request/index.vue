@@ -45,7 +45,12 @@
                             <div class="group" v-for="item in list" :key="item._id">
                                 <div class="data">
                                     <div class="text">{{ item.document }}</div>
-                                    <div class="subtext">{{ item.action }} by Prof. {{ item.clientName }} </div>
+                                    <div class="subtext">
+                                        {{ item.action }}
+                                        <template v-if="item.document === 'Waiting to release'">
+                                            by Prof. {{ item.clientName }}
+                                        </template>
+                                    </div>
                                 </div>
                                 <div class="data">
                                     <div class="date">{{ $moment(item.createdAt).format('ll') }}</div>
