@@ -55,12 +55,12 @@
                             </div>
                             <div class="field group-data">
                                 <div class="col group-data--col">
-                                    <template v-if="this.user.document === ''">
+                                    <template v-if="user.document === ''">
                                         <button class="button button-submit" type="submit" @click.prevent="toggle">Submit a Request</button>
                                     </template>
-                                    <template v-if="this.user.document === !''">
-                                        <button class="button button-submit" type="submit" :disabled="this.user.document === !''">{{ this.user.document }}</button>
-                                    </template>                                        
+                                    <template v-else>
+                                        <button class="button button-submit" type="submit" disabled>Waiting for approval</button>
+                                    </template>                       
                                 </div>
                             </div>
                         </div>                        
