@@ -58,7 +58,7 @@
                                     <template v-if="this.user.document === ''">
                                         <button class="button button-submit" type="submit" @click.prevent="toggle">Submit a Request</button>
                                     </template>
-                                    <template v-if="this.user.document === 'Waiting for approval'">
+                                    <template v-if="this.user.document === !''">
                                         <button class="button button-submit" type="submit" :disabled="this.user.document === !''">{{ this.user.document }}</button>
                                     </template>                                        
                                 </div>
